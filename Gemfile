@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -27,6 +28,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rails-controller-testing', '1.0.4'
+  gem 'minitest', '~> 5.14'
+  gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
 end
 
 group :production do
