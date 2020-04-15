@@ -15,7 +15,7 @@ class ProjectAddTest < ActionDispatch::IntegrationTest
   test "valid TODO name" do
     get todo_path
     assert_difference 'Project.count', 1 do
-      post project_path, params: { project: { name:  "FooBar name" } }
+      post projects_path, params: { project: { name: "FooBar name" } }
     end
     follow_redirect!
     assert_template 'projects/show'
