@@ -1,1 +1,5 @@
-# empty
+foo:
+  name: foo bar
+
+baz:
+  name: bar baz foo

@@ -18,7 +18,7 @@ class ProjectAddTest < ActionDispatch::IntegrationTest
       post projects_path, params: { project: { name: "FooBar name" } }
     end
     follow_redirect!
-    assert_template 'projects/show'
+    assert_template 'projects/index'
     assert_not flash.nil?
   end
 end
