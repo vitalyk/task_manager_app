@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: task 1
+  status: false
+  project: foo
+
+two:
+  name: task 2
+  status: false
+  project: foo
+
+one_2:
+  name: task 1
+  status: false
+  project: baz
+
+
+two_2:
+  name: task 2
+  status: false
+  project: baz

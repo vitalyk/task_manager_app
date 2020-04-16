@@ -31,7 +31,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.update(project_params)
       flash[:success] = "TODO List updated"
-      redirect_to @project
+      #redirect_to @project
+      redirect_to projects_url
     else
       render 'edit'
     end 

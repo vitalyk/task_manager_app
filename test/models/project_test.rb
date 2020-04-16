@@ -37,4 +37,13 @@ class ProjectTest < ActiveSupport::TestCase
     @project.save
     assert_equal mixed_case_name.downcase, @project.reload.name
   end
+
+  test "associated tasks should be destroyed" do
+    @project.save
+    @project.tasks.create!(name: "Lorem ipsum")
+    assert_difference 'Task.count', -1 do
+      @project.destroy
+    end
+  end
+
 end

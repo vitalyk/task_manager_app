@@ -7,4 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create a main sample TODO.
-Project.create!(name: "bar baz foo")
+project =  Project.create!(name: "For home")
+
+5.times do
+  name = Faker::Lorem.sentence(word_count: 5) 
+  project.tasks.create!(name: name)
+end 
+
+
+
+

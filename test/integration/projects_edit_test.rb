@@ -20,7 +20,9 @@ class ProjectsEditTest < ActionDispatch::IntegrationTest
     name  = "Baz Baz"
     patch project_path(@project), params: { project: { name:  name } }
     assert_not flash.empty?
-    assert_redirected_to @project
+    follow_redirect!
+    assert_template 'projects/index'
+    #assert_redirected_to 'projects'
     @project.reload
     assert_equal name.downcase,  @project.name.downcase
   end
