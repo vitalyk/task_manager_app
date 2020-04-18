@@ -4,6 +4,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   test "layout" do
     get root_path
-    assert_template 'static_pages/home'
+    assert_template 'projects/index'
   end
 end

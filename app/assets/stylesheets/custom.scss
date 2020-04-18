@@ -9,6 +9,34 @@
 
 /* universal */
 
+#project-header-row {
+  background-color: #428bca;
+  margin-top: 20px;
+  padding: 20px;
+  color: white;
+}
+
+#project-name-cell {
+  text-align: left;
+}
+
+#task-row {
+  color: #777777;
+  background-color: #ffffff;
+  border-style: groove;
+  padding: 10px;
+}
+
+#task-name-cell {
+  font-weight: bold;
+  text-align: left;
+}
+
+#add-task-row {
+  background-color: #cfcfcf;
+  margin-top: 1px;
+}
+
 body {
   padding-top: 60px;
 }

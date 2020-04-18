@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  get  '/home', to: 'static_pages#home'
+  resources :projects do
+    resources :tasks, only: [:create, :edit, :update, :destroy]
+  end
   get  '/todo', to: 'projects#new'
-  resources :projects 
+  root 'projects#index'
 end
