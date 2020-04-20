@@ -1,29 +1,32 @@
 class TasksController < ApplicationController
   before_action :get_project
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-
-  def show
-  end
+  before_action :set_task, only: [:edit, :update, :destroy]
 
   def new
     @task = @project.tasks.build
   end
 
   def edit
+    @task = get_project.tasks.find(params[:id])
+  end
+
+  def update
+    @task = get_project.tasks(params[:id])
+    if @task.update(params.require(:task).permit(:name))
+      flash[:success] = "task updated"
+      redirect_to root_url
+    else
+      render 'edit'
+    end
   end
 
   def create
     @task = @project.tasks.build(params.permit(:name))
-
-    respond_to do |format|
-      if @task.save
-        flash[:success] = "Task created!"
-        format.html { redirect_to root_url }
-        format.json { render :projects_url, status: :created, location: @task  }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      flash[:success] = "Task created!"
+      redirect_to root_url
+    else
+      redirect_to root_url
     end
   end
 
@@ -45,9 +48,5 @@ class TasksController < ApplicationController
 
     def set_task
       @task = @project.tasks.find(params[:id])
-    end
-
-    def task_params
-
     end
 end

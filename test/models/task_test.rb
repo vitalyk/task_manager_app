@@ -3,7 +3,8 @@ require 'test_helper'
 class TaskTest < ActiveSupport::TestCase
 
   def setup
-    @project = projects(:foo)
+    @project = Project.new(name: "Example Project")
+    @project.save
     @task = @project.tasks.build(name: "Lorem ipsum")
   end
 
@@ -24,5 +25,12 @@ class TaskTest < ActiveSupport::TestCase
   test "name should be at most 140 characters" do
     @task.name = "a" * 141
     assert_not @task.valid?
+  end
+
+  test "associated task should be destroyed" do
+    @project.tasks.create!(name: "Lorem ipsum")
+    assert_difference 'Task.count', -1 do
+      @project.destroy
+    end
   end
 end
