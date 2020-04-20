@@ -11,9 +11,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = get_project.tasks(params[:id])
     if @task.update(params.require(:task).permit(:name))
-      flash[:success] = "task updated"
+      flash[:success] = "Task updated"
       redirect_to root_url
     else
       render 'edit'
