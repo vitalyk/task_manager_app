@@ -20,7 +20,7 @@
     <div class="col-md-1">
       <span class="glyphicon glyphicon-plus"></span>
     </div>
-    <%= form_with(url: project_tasks_path(project), local: true) do |f| %>
+    <%= form_with(url: project_tasks_path(project), remote: true) do |f| %>
       <div class="col-md-9">
         <%= f.text_field :name, class: 'form-control', placeholder: "Start typing here to create a task..." %>
       </div>
@@ -33,7 +33,14 @@
 
     <% project.tasks.each do |task| %>
       <div class="row" id="task-row">
-        <div class="col-md-1"><input type="checkbox"></div>
+        <div class="col-md-1">
+          <%= check_box_tag 'status', task.id, task.status,
+                            data: {
+                                remote: true,
+                                url: toggle_project_task_path(project, task),
+                                method: "PATCH"
+                            } %>
+        </div>
         <div class="col-md-8" id="task-name-cell"><%= task.name %></div>
         <div class="col-md-1"><span class="glyphicon glyphicon-move"></span></div>
         <div class="col-md-1">

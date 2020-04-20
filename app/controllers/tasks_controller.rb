@@ -40,6 +40,18 @@ class TasksController < ApplicationController
     end
   end
 
+  def toggle
+    @task = get_project.tasks.find(params[:id])
+    respond_to do |format|
+      status = params[:status] ? 1 : 0
+      if @task.update(status: status)
+        format.html { redirect_to root_url, notice: "Status was successfully updated: #{status}" }
+      else
+        format.html { redirect_to root_url, notice: "FAIL" }
+      end
+    end
+  end
+
   private
     def get_project
       @project = Project.find(params[:project_id])
