@@ -7,7 +7,12 @@
   box-sizing:         border-box;
 }
 
-/* universal */
+#todo-button {
+  margin-top: 20px;
+  span {
+   color: #2b3e5c
+  }
+}
 
 .white {
   color: #fff;
@@ -17,7 +22,6 @@
   background-color: #428bca;
   margin-top: 20px;
   padding: 20px;
-
 }
 
 #project-name-cell {
@@ -27,19 +31,56 @@
 #task-row {
   color: #777777;
   background-color: #ffffff;
-  border-style: groove;
   padding: 10px;
+  border-style: solid;
+  border-width: thin;
 }
 
 #task-name-cell {
   font-weight: bold;
   text-align: left;
+  border-right-style: solid;
+  border-right-width: thin;
+  border-left-style: double;
 }
 
 #add-task-row {
   background-color: #cfcfcf;
-  margin-top: 1px;
+  padding-top: 15px;
 }
+
+#task-move-icon {
+  border-right-style: solid;
+  border-right-width: thin;
+}
+
+#task-edit-icon {
+  border-right-style: solid;
+  border-right-width: thin;
+}
+
+#task-glyphicon-plus {
+  padding-top: 10px;
+  padding-right: 30px;
+  color: #82b99b;
+}
+
+#project-calendar-icon {
+  padding-right: 40px;
+}
+
+#project-edit-icon {
+  border-right-style: solid;
+  border-right-width: thin;
+}
+
+#project-delete-icon {
+  span {
+    float: right;
+  }
+
+}
+/* universal */
 
 body {
   padding-top: 60px;

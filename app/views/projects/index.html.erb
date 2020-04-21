@@ -4,20 +4,20 @@
   <br>
   <% @projects.each do |project| %>
     <div class="row" id="project-header-row">
-      <div class="col-md-1"><span class="glyphicon glyphicon-calendar white"></span></div>
+      <div class="col-md-1"><span class="glyphicon glyphicon-calendar white" id="project-calendar-icon"></span></div>
       <div class="col-md-8 white" id="project-name-cell">
         <%= project.name %>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" id="project-edit-icon">
         <%= link_to "<span class='glyphicon glyphicon-pencil white'></span>".html_safe, edit_project_path(project) %>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" id="project-delete-icon">
         <%= link_to "<span class='glyphicon glyphicon-trash white'></span>".html_safe, project, method: :delete, data: {confirm: "Are you sure?"} %>
       </div>
     </div>
 
     <div class="row" id="add-task-row">
-    <div class="col-md-1">
+    <div class="col-md-1" id="task-glyphicon-plus">
       <span class="glyphicon glyphicon-plus"></span>
     </div>
     <%= form_with(url: project_tasks_path(project), remote: true) do |f| %>
@@ -42,11 +42,11 @@
                             } %>
         </div>
         <div class="col-md-8" id="task-name-cell"><%= task.name %></div>
-        <div class="col-md-1"><span class="glyphicon glyphicon-move"></span></div>
-        <div class="col-md-1">
+        <div class="col-md-1" id="task-move-icon"><span class="glyphicon glyphicon-move"></span></div>
+        <div class="col-md-1" id="task-edit-icon">
           <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_task_path(project, task) %>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1" id="task-delete-icon">
           <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, [project, task],  method: :delete %>
         </div>
       </div>
@@ -54,5 +54,7 @@
       <br>
     <% end %>
   <% end %>
-  <%= link_to "Add TODO List", todo_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to '<button type="button" class="btn btn-lg btn-primary" id="todo-button">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><strong> Add TODO List</strong>
+  </button>'.html_safe, todo_path%>
 </div>
