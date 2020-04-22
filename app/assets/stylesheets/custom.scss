@@ -7,6 +7,10 @@
   box-sizing:         border-box;
 }
 
+.container, .jumbotron {
+  background-color: orange;
+}
+
 #todo-button {
   margin-top: 20px;
   span {
@@ -26,7 +30,39 @@
 
 #project-name-cell {
   text-align: left;
+  font-weight: bold;
+  padding-top: 5px;
 }
+
+#project-calendar-icon {
+  padding-right: 40px;
+  color: #666666;
+}
+
+.edit-icons {
+  span {
+    float: right;
+    padding-top: 5px;
+  }
+}
+
+#project-header-row .hides, #task-row .hides{
+  visibility: hidden;
+}
+
+#project-header-row:hover .hides, #task-row:hover .hides {
+  visibility: visible;
+}
+
+#project-header-row:hover, #task-row:hover {
+  cursor: pointer;
+}
+
+.glyphicon.glyphicon-calendar {
+  font-size: 25px;
+}
+
+/* task */
 
 #task-row {
   color: #777777;
@@ -36,11 +72,13 @@
   border-width: thin;
 }
 
+#task-row:hover {
+  background-color: lemonchiffon;
+}
+
 #task-name-cell {
   font-weight: bold;
   text-align: left;
-  border-right-style: solid;
-  border-right-width: thin;
   border-left-style: double;
 }
 
@@ -49,37 +87,12 @@
   padding-top: 15px;
 }
 
-#task-move-icon {
-  border-right-style: solid;
-  border-right-width: thin;
-}
-
-#task-edit-icon {
-  border-right-style: solid;
-  border-right-width: thin;
-}
-
 #task-glyphicon-plus {
-  padding-top: 10px;
   padding-right: 30px;
   color: #82b99b;
+  font-size: 25px;
 }
 
-#project-calendar-icon {
-  padding-right: 40px;
-}
-
-#project-edit-icon {
-  border-right-style: solid;
-  border-right-width: thin;
-}
-
-#project-delete-icon {
-  span {
-    float: right;
-  }
-
-}
 /* universal */
 
 body {
@@ -165,14 +178,3 @@ input {
     color: $state-danger-text;
   }
 }
-
-/* Projects index */
-.projects {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-  }
-}
-

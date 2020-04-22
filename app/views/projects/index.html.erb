@@ -4,17 +4,17 @@
   <br>
   <% @projects.each do |project| %>
     <div class="row" id="project-header-row">
-      <div class="col-md-1"><span class="glyphicon glyphicon-calendar white" id="project-calendar-icon"></span></div>
-      <div class="col-md-8 white" id="project-name-cell">
+      <div class="col-md-1"><span class="glyphicon glyphicon-calendar" id="project-calendar-icon"></span></div>
+      <div class="col-md-9 white" id="project-name-cell">
         <%= project.name %>
       </div>
-      <div class="col-md-1" id="project-edit-icon">
-        <%= link_to "<span class='glyphicon glyphicon-pencil white'></span>".html_safe, edit_project_path(project) %>
+      <div class="col-md-1 edit-icons">
+        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_project_path(project) %>
       </div>
-      <div class="col-md-1" id="project-delete-icon">
-        <%= link_to "<span class='glyphicon glyphicon-trash white'></span>".html_safe, project, method: :delete, data: {confirm: "Are you sure?"} %>
+      <div class="col-md-1 edit-icons" id="project-delete-icon">
+        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, project, method: :delete, data: {confirm: "Are you sure?"} %>
       </div>
-    </div>
+    </div> <!-- div class="row" -->
 
     <div class="row" id="add-task-row">
     <div class="col-md-1" id="task-glyphicon-plus">
@@ -42,12 +42,12 @@
                             } %>
         </div>
         <div class="col-md-8" id="task-name-cell"><%= task.name %></div>
-        <div class="col-md-1" id="task-move-icon"><span class="glyphicon glyphicon-move"></span></div>
+        <div class="col-md-1" id="task-move-icon"><span class="glyphicon glyphicon-move hides"></span></div>
         <div class="col-md-1" id="task-edit-icon">
-          <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_project_task_path(project, task) %>
+          <%= link_to "<span class='glyphicon glyphicon-pencil hides'></span>".html_safe, edit_project_task_path(project, task) %>
         </div>
         <div class="col-md-1" id="task-delete-icon">
-          <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, [project, task],  method: :delete %>
+          <%= link_to "<span class='glyphicon glyphicon-trash hides'></span>".html_safe, [project, task],  method: :delete %>
         </div>
       </div>
       <br>
