@@ -3,9 +3,9 @@ require 'test_helper'
 class TaskTest < ActiveSupport::TestCase
 
   def setup
-    @project = Project.new(name: "Example Project")
-    @project.save
-    @task = @project.tasks.build(name: "Lorem ipsum")
+    @user = users(:vitaliy)
+    @project = @user.projects.create(name: "Example Project")
+    @task = @project.tasks.create(name: "Lorem ipsum")
   end
 
   test "should be valid" do
@@ -28,9 +28,9 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "associated task should be destroyed" do
-    @project.tasks.create!(name: "Lorem ipsum")
-    assert_difference 'Task.count', -1 do
-      @project.destroy
+    @project.tasks.create!(name: "Lorem ipsum dolor")
+    assert_difference '@project.tasks.count', -1 do
+      @project.tasks.last.destroy
     end
   end
 end

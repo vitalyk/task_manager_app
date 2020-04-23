@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
   
   def new
-    @project = Project.new
+    @project = current_user.projects.build
   end
 
   def show
@@ -13,38 +13,38 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.build(project_params)
     if @project.save
       flash[:success] = "TODO List is created!"
-      redirect_to root_url
+      redirect_to current_user
     else
       render 'new'
     end
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     if @project.update(project_params)
       flash[:success] = "TODO List updated"
-      redirect_to root_url
+      redirect_to current_user
     else
       render 'edit'
     end 
   end
  
   def destroy
-    Project.find(params[:id]).destroy
+    current_user.projects.find(params[:id]).destroy
     flash[:success] = "TODO List deleted"
-    redirect_to root_url
+    redirect_to current_user
   end
 
   private
 
     def project_params
-      params.require(:project).permit(:name)                                   
+      params.require(:project).permit(:name, :user_id)
     end
 end

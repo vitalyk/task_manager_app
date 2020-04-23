@@ -2,32 +2,32 @@
   <h1>SIMPLE TODO LISTS</h1>
   <br>
   <br>
-  <% @projects.each do |project| %>
+  <% @user.projects.each do |project| %>
     <div class="row" id="project-header-row">
       <div class="col-md-1"><span class="glyphicon glyphicon-calendar" id="project-calendar-icon"></span></div>
       <div class="col-md-9 white" id="project-name-cell">
         <%= project.name %>
       </div>
       <div class="col-md-1 edit-icons">
-        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_project_path(project) %>
+        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_user_project_path(@user, project) %>
       </div>
       <div class="col-md-1 edit-icons" id="project-delete-icon">
-        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, project, method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, [@user, project], method: :delete, data: {confirm: "Are you sure?"} %>
       </div>
     </div> <!-- div class="row" -->
 
     <div class="row" id="add-task-row">
-    <div class="col-md-1" id="task-glyphicon-plus">
-      <span class="glyphicon glyphicon-plus"></span>
-    </div>
-    <%= form_with(url: project_tasks_path(project), remote: true) do |f| %>
-      <div class="col-md-9">
-        <%= f.text_field :name, class: 'form-control', placeholder: "Start typing here to create a task..." %>
+      <div class="col-md-1" id="task-glyphicon-plus">
+        <span class="glyphicon glyphicon-plus"></span>
       </div>
-      <div class="col-md-2">
-        <%= f.submit "Add Task", class: "btn btn-success" %>
-      </div>
-    <% end %>
+      <%= form_with(url: project_tasks_path(project), remote: true) do |f| %>
+        <div class="col-md-9">
+          <%= f.text_field :name, class: 'form-control', placeholder: "Start typing here to create a task..." %>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "Add Task", class: "btn btn-success" %>
+        </div>
+      <% end %>
     </div>
     <div class="row"></div>
 
@@ -56,5 +56,5 @@
   <% end %>
   <%= link_to '<button type="button" class="btn btn-lg btn-primary" id="todo-button">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><strong> Add TODO List</strong>
-  </button>'.html_safe, todo_path%>
+  </button>'.html_safe, new_user_project_path(@user)%>
 </div>
