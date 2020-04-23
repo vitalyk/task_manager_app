@@ -9,7 +9,7 @@
         <%= project.name %>
       </div>
       <div class="col-md-1 edit-icons">
-        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_user_project_path(project) %>
+        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_user_project_path(@user, project) %>
       </div>
       <div class="col-md-1 edit-icons" id="project-delete-icon">
         <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, [@user, project], method: :delete, data: {confirm: "Are you sure?"} %>
