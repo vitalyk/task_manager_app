@@ -3,20 +3,20 @@
 one:
   name: task 1
   status: false
-  project: foo
+  project: home
 
 two:
   name: task 2
   status: false
-  project: foo
+  project: home
 
 one_2:
   name: task 1
   status: false
-  project: baz
+  project: office
 
 
 two_2:
   name: task 2
   status: false
-  project: baz
+  project: office

@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(params.require(:task).permit(:name))
       flash[:success] = "Task updated"
-      redirect_to root_url
+      redirect_to current_user
     else
       render 'edit'
     end
@@ -23,9 +23,9 @@ class TasksController < ApplicationController
     @task = @project.tasks.build(params.permit(:name))
     if @task.save
       flash[:success] = "Task created!"
-      redirect_to root_url
+      redirect_to current_user
     else
-      redirect_to root_url
+      render html: 'error'
     end
   end
 
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
     @task.destroy
     flash[:success] = "Task deleted"
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referrer || users_path }
       format.json { head :no_content }
     end
   end
@@ -45,9 +45,9 @@ class TasksController < ApplicationController
     respond_to do |format|
       status = params[:status] ? 1 : 0
       if @task.update(status: status)
-        format.html { redirect_to root_url, notice: "Status was successfully updated: #{status}" }
+        format.html { redirect_to current_user, notice: "Status was successfully updated: #{status}" }
       else
-        format.html { redirect_to root_url, notice: "FAIL" }
+        format.html { redirect_to current_user, notice: "FAIL" }
       end
     end
   end

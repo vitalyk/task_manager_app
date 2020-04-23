@@ -1,5 +1,7 @@
-foo:
-  name: foo bar
+home:
+  user: vitaliy
+  name: foo home
 
-baz:
-  name: bar baz foo
+office:
+  user: vitaliy
+  name: for office
