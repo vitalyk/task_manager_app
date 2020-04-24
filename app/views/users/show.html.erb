@@ -12,7 +12,8 @@
         <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_user_project_path(@user, project) %>
       </div>
       <div class="col-md-1 edit-icons" id="project-delete-icon">
-        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, [@user, project], method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, [@user, project], method: :delete,
+                    remote: true, data: {confirm: "Are you sure?"} %>
       </div>
     </div> <!-- div class="row" -->
 
@@ -47,7 +48,7 @@
           <%= link_to "<span class='glyphicon glyphicon-pencil hides'></span>".html_safe, edit_project_task_path(project, task) %>
         </div>
         <div class="col-md-1" id="task-delete-icon">
-          <%= link_to "<span class='glyphicon glyphicon-trash hides'></span>".html_safe, [project, task],  method: :delete %>
+          <%= link_to "<span class='glyphicon glyphicon-trash hides'></span>".html_safe, [project, task],  method: :delete, remote: true %>
         </div>
       </div>
       <br>

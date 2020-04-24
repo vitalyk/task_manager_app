@@ -1,9 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :logged_in_user
 
-  def index
-    @projects = current_user.projects
-  end
-  
   def new
     @project = current_user.projects.build
   end

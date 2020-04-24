@@ -1,10 +1,7 @@
 class TasksController < ApplicationController
+  before_action :logged_in_user
   before_action :get_project
   before_action :set_task, only: [:edit, :update, :destroy]
-
-  def new
-    @task = @project.tasks.build
-  end
 
   def edit
     @task = get_project.tasks.find(params[:id])
@@ -53,6 +50,7 @@ class TasksController < ApplicationController
   end
 
   private
+
     def get_project
       @project = Project.find(params[:project_id])
     end
