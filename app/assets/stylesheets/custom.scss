@@ -18,6 +18,11 @@
   color: #fff;
 }
 
+.task-icons {
+  padding-left: 10px;
+  padding-right: 10px
+}
+
 #project-header-row {
   background-color: #428bca;
   margin-top: 20px;
@@ -36,10 +41,10 @@
 }
 
 .edit-icons {
-  span {
-    float: right;
-    padding-top: 5px;
-  }
+  float: right;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px
 }
 
 #project-header-row .hides, #task-row .hides{
@@ -63,9 +68,7 @@
 #task-row {
   color: #777777;
   background-color: #ffffff;
-  padding: 10px;
-  border-style: solid;
-  border-width: thin;
+  padding: 10px 10px;
 }
 
 #task-row:hover {
@@ -75,7 +78,6 @@
 #task-name-cell {
   font-weight: bold;
   text-align: left;
-  border-left-style: double;
 }
 
 #add-task-row {

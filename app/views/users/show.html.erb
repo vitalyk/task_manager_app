@@ -5,15 +5,11 @@
   <% @user.projects.each do |project| %>
     <div class="row" id="project-header-row">
       <div class="col-md-1"><span class="glyphicon glyphicon-calendar" id="project-calendar-icon"></span></div>
-      <div class="col-md-9 white" id="project-name-cell">
-        <%= project.name %>
-      </div>
-      <div class="col-md-1 edit-icons">
-        <%= link_to "<span class='glyphicon glyphicon-pencil white hides'></span>".html_safe, edit_user_project_path(@user, project) %>
-      </div>
-      <div class="col-md-1 edit-icons" id="project-delete-icon">
-        <%= link_to "<span class='glyphicon glyphicon-trash white hides'></span>".html_safe, [@user, project], method: :delete,
+      <div class="col-md-10 white" id="project-name-cell"><%= project.name %></div>
+      <div class="col-md-1">
+        <%= link_to "<span class='glyphicon glyphicon-trash white hides edit-icons'></span>".html_safe, [@user, project], method: :delete,
                     remote: true, data: {confirm: "Are you sure?"} %>
+        <%= link_to "<span id='delete-project-icon' class='glyphicon glyphicon-pencil white hides edit-icons'></span>".html_safe, edit_user_project_path(@user, project) %>
       </div>
     </div> <!-- div class="row" -->
 
@@ -30,30 +26,26 @@
         </div>
       <% end %>
     </div>
-    <div class="row"></div>
 
-    <% project.tasks.each do |task| %>
-      <div class="row" id="task-row">
-        <div class="col-md-1">
-          <%= check_box_tag 'status', task.id, task.status,
-                            data: {
-                                remote: true,
-                                url: toggle_project_task_path(project, task),
-                                method: "PATCH"
-                            } %>
-        </div>
-        <div class="col-md-8" id="task-name-cell"><%= task.name %></div>
-        <div class="col-md-1" id="task-move-icon"><span class="glyphicon glyphicon-move hides"></span></div>
-        <div class="col-md-1" id="task-edit-icon">
-          <%= link_to "<span class='glyphicon glyphicon-pencil hides'></span>".html_safe, edit_project_task_path(project, task) %>
-        </div>
-        <div class="col-md-1" id="task-delete-icon">
-          <%= link_to "<span class='glyphicon glyphicon-trash hides'></span>".html_safe, [project, task],  method: :delete, remote: true %>
-        </div>
-      </div>
-      <br>
-      <br>
-    <% end %>
+    <ul class="list-group">
+      <% project.tasks.each do |task| %>
+        <li class="list-group-item row" id="task-row">
+          <span class="col-md-1"><%= check_box_tag 'status', task.id, task.status,
+                              data: {
+                                  remote: true,
+                                  url: toggle_project_task_path(project, task),
+                                  method: "PATCH"
+                              } %>
+          </span>
+          <span class="col-md-9" id="task-name-cell"><%= task.name %></span>
+          <span class="col-md-2">
+            <span id="task-move-icon" class="glyphicon glyphicon-move hides task-icons"></span>
+            <%= link_to "<span id='task-edit-icon' class='glyphicon glyphicon-pencil hides task-icons'></span>".html_safe, edit_project_task_path(project, task) %>
+            <%= link_to "<span id='task-delete-icon' class='glyphicon glyphicon-trash hides task-icons'></span>".html_safe, [project, task],  method: :delete, remote: true %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
   <%= link_to '<button type="button" class="btn btn-lg btn-primary" id="todo-button">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><strong> Add TODO List</strong>
