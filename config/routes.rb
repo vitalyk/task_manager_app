@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       member do
         patch 'toggle'
       end
+
+      member do
+        patch 'sort'
+      end
     end
   end
 end

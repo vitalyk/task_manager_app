@@ -27,9 +27,9 @@
       <% end %>
     </div>
 
-    <ul class="list-group">
+    <ul class="list-group sortable" data-url="<%= sort_project_task_path(project) %>">
       <% project.tasks.each do |task| %>
-        <li class="list-group-item row" id="task-row">
+        <li class='list-group-item row task-row' id="<%= dom_id(task) %>">
           <span class="col-md-1"><%= check_box_tag 'status', task.id, task.status,
                               data: {
                                   remote: true,

@@ -47,15 +47,15 @@
   padding-right: 5px
 }
 
-#project-header-row .hides, #task-row .hides{
+#project-header-row .hides, .task-row .hides{
   visibility: hidden;
 }
 
-#project-header-row:hover .hides, #task-row:hover .hides {
+#project-header-row:hover .hides, .task-row:hover .hides {
   visibility: visible;
 }
 
-#project-header-row:hover, #task-row:hover {
+#project-header-row:hover, .task-row:hover {
   cursor: pointer;
 }
 
@@ -65,13 +65,13 @@
 
 /* task */
 
-#task-row {
+.task-row {
   color: #777777;
   background-color: #ffffff;
   padding: 10px 10px;
 }
 
-#task-row:hover {
+.task-row:hover {
   background-color: lemonchiffon;
 }
 
