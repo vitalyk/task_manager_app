@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       member do
         patch 'sort'
       end
+
+      member do
+        patch 'target_date'
+      end
+
     end
   end
 end
