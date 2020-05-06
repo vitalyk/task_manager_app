@@ -14,7 +14,7 @@ document.addEventListener("turbolinks:load", function() {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('turbolinks:load', function() {
 
     $(".datepicker").datepicker({
         minDate: +1,
