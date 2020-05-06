@@ -19,8 +19,8 @@
 }
 
 .task-icons {
-  padding-left: 10px;
-  padding-right: 10px
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 #project-header-row {
@@ -38,6 +38,7 @@
 #project-calendar-icon {
   padding-right: 40px;
   color: #666666;
+  font-size: 25px;
 }
 
 .edit-icons {
@@ -59,8 +60,8 @@
   cursor: pointer;
 }
 
-.glyphicon.glyphicon-calendar {
-  font-size: 25px;
+.datepicker {
+  width: 80px;
 }
 
 /* task */
@@ -76,6 +77,7 @@
 }
 
 #task-name-cell {
+  margin-top: 20px;
   font-weight: bold;
   text-align: left;
 }

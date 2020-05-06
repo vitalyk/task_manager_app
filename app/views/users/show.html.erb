@@ -30,14 +30,17 @@
     <ul class="list-group sortable" data-url="<%= sort_project_task_path(project) %>">
       <% project.tasks.each do |task| %>
         <li class='list-group-item row task-row' id="<%= dom_id(task) %>">
-          <span class="col-md-1"><%= check_box_tag 'status', task.id, task.status,
+          <span id="task-status" class="col-md-4"><%= check_box_tag 'status', task.id, task.status,
                               data: {
                                   remote: true,
                                   url: toggle_project_task_path(project, task),
                                   method: "PATCH"
                               } %>
+
+          <label for="datepicker">deadline:</label>
+          <input type="text" class="datepicker" data-url="<%= target_date_project_task_path(project, task) %>" value="<%= task.target_date %>">
           </span>
-          <span class="col-md-9" id="task-name-cell"><%= task.name %></span>
+          <span class="col-md-6" id="task-name-cell"><%= task.name %></span>
           <span class="col-md-2">
             <span id="task-move-icon" class="glyphicon glyphicon-move hides task-icons"></span>
             <%= link_to "<span id='task-edit-icon' class='glyphicon glyphicon-pencil hides task-icons'></span>".html_safe, edit_project_task_path(project, task) %>

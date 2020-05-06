@@ -57,6 +57,19 @@ class TasksController < ApplicationController
     head :ok
   end
 
+  def target_date
+    @task = get_project.tasks.find(params[:id])
+
+    #TODO: need to fix this asap!!!
+    # need to pass somehow :target_date key from the params
+    value = params.keys.first
+
+    date = DateTime.strptime(value, '%m/%d/%Y')
+    @task.update(target_date: date)
+
+    head :ok
+  end
+
   private
 
     def get_project

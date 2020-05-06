@@ -13,3 +13,17 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 });
+
+document.addEventListener('turbolinks:load', function() {
+
+    $(".datepicker").datepicker({
+        minDate: +1,
+        onSelect: function(dateText, inst) {
+            Rails.ajax({
+                url: $(this).data("url"),
+                type: "PATCH",
+                data: $(this).val()
+            });
+        }
+    });
+});
